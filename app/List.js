@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import Card from './Card';
-
+/**
+ * 显示的在组件中声明可以使用哪些属性，哪些属性是必须的以及数据类型
+ * */
 class List extends Component {
   render() {
     let cards = this.props.cards.map((card) => {

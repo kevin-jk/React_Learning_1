@@ -47,7 +47,9 @@ class Card extends Component {
       width: 7,
       backgroundColor: this.props.color
     };
-
+      // 开发人员需要显示的绑定
+      // .bind(this)
+      // 有多个className的时候，如果相同的样式，后一个会覆盖前一个，总的样式为叠加
     return (
       <div className="card">
         <div style={sideColor} />

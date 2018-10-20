@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-
+/**
+ * 为列表属性，增加一个Key属性
+ * */
 class CheckList extends Component {
   checkInputKeyPress(evt){
     if(evt.key === 'Enter'){

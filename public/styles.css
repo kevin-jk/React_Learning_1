@@ -29,7 +29,17 @@ ul {
   white-space: nowrap;
   height:100%;
 }
+/**
 
+ css 选择器   选择器是一种模式，选择需要添加样式的元素
+ p:before 在每个p袁术内容前添加内容
+ p:lang(it)  选择带有以 "it" 开头的 lang 属性值的每个 <p> 元素
+ p:last-child  选择属于其父元素最后一个子元素每个 <p> 元素
+ :not(p) 选择非 <p> 元素的每个元素
+
+
+ white-space：nowrap 规定的文本不进行换行，直到遇到 <br> 标签为止。
+*/
 .list {
   position: relative;
   display: inline-block;
