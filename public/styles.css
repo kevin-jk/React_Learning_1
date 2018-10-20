@@ -108,3 +108,27 @@ ul {
   margin-top: 5px;
   border-radius: 3px;
 }
+
+/**
+ 过渡动画
+
+ 将元素从一种样式变化为另外一种样式添加的效果
+*/
+.toggle-enter{
+  max-height: 0;
+  overflow: hidden;
+}
+.toggle-enter.toggle-enter-active{
+  max-height: 300px;
+  overflow: hidden;
+  transition: max-height .25s ease-in;
+}
+.toggle-leave{
+  max-height: 300px;
+  overflow: hidden;
+}
+.toggle-leave.toggle-leave-active{
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .25s ease-out;
+}
