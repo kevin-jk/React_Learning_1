@@ -1,5 +1,5 @@
 import 'babel-polyfill';
-//todo bael-polyfill??
+
 export const throttle = (func, wait) => {
   let context, args, prevArgs, argsChanged, result;
   let previous = 0;

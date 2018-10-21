@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import KanbanBoard from './KanbanBoard';
 import update from 'react-addons-update';
 import 'whatwg-fetch';
-import 'babel-polyfill'
+import 'babel-polyfill';
 import {throttle} from "./utils";
 
 /**
@@ -56,8 +56,8 @@ class KanbanBoardContainer extends Component {
         this.state = {
             cards: [],
         };
-        this.updateCardPosition = throttle(this.updateCardStatus.bind(this));
-        this.updateCardPosition = throttle(this.updateCardPosition.bind(this),500)
+        this.updateCardStatus = throttle(this.updateCardStatus.bind(this));
+        this.updateCardPosition = throttle(this.updateCardPosition.bind(this),500);
     }
 
     componentDidMount() {
@@ -148,38 +148,7 @@ class KanbanBoardContainer extends Component {
                 this.setState(prevState);
             });
     }
-    persistCardDrag (cardId, status) {
-        // Find the index of the card
-        let cardIndex = this.state.cards.findIndex((card)=>card.id == cardId);
-        // Get the current card
-        let card = this.state.cards[cardIndex]
 
-        fetch(`${API_URL}/cards/${cardId}`, {
-            method: 'put',
-            headers: API_HEADERS,
-            body: JSON.stringify({status: card.status, row_order_position: cardIndex})
-        })
-            .then((response) => {
-                if(!response.ok){
-                    // Throw an error if server response wasn't 'ok'
-                    // so we can revert back the optimistic changes
-                    // made to the UI.
-                    throw new Error("Server response wasn't OK")
-                }
-            })
-            .catch((error) => {
-                console.error("Fetch error:",error);
-                this.setState(
-                    update(this.state, {
-                        cards: {
-                            [cardIndex]: {
-                                status: { $set: status }
-                            }
-                        }
-                    })
-                );
-            });
-    }
     toggleTask(cardId, taskId, taskIndex) {
         // Keep a reference to the original state prior to the mutations
         // in case we need to revert the optimistic changes in the UI
@@ -273,8 +242,7 @@ class KanbanBoardContainer extends Component {
                          cardCallbacks={
                              {
                                  updateStatus: this.updateCardStatus,
-                                 updatePosition: this.updateCardPosition,
-                                 persistCardDrag:this.persistCardDrag.bind(this)
+                                 updatePosition: this.updateCardPosition
                              }
                          }
 
